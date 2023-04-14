@@ -3,8 +3,8 @@ const Empleado = require('../../models/empleado');
 const getEmployee = async (req, res) => {
     const { id } = req.params;
     try {
-        const employee = await Task.findOne({
-            where: {id}
+        const employee = await Empleado.findOne({
+            where: {codigo: id}
         })
         res.json(employee);
     } catch (error) {
@@ -12,4 +12,4 @@ const getEmployee = async (req, res) => {
     }
 };
 
-module.exports = {getEmployees};
+module.exports = {getEmployee};

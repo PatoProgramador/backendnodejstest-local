@@ -5,9 +5,7 @@ const deleteEmployee = async (req, res) => {
 
     try {
         await Empleado.destroy({
-            where: {
-                id,
-            },
+            where: {codigo: id},
         });
         res.sendStatus(204)
     } catch (error) {

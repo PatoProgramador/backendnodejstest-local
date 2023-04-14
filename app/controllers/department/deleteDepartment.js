@@ -5,7 +5,7 @@ const deleteDepartment = async (req, res) => {
 
     try {
         await Departamento.destroy({
-            where: {id},
+            where: {codigo: id},
         });
         res.sendStatus(204)
     } catch (error) {

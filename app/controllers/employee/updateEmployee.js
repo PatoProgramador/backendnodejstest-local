@@ -2,15 +2,12 @@ const Empleado = require('../../models/empleado');
 
 const updateEmployee = async (req, res) => {
     const { id } = req.params;
-    const { nif, nombre, apellido1, apellido2 } = req.body;
+
     try {
-        const newEmployee = await Empleado.create({
-            nif,
-            nombre,
-            apellido1,
-            apellido2
+        const employee = await Empleado.findOne({
+            where: {codigo: id}
         });
-    
+        employee.set(req.body);
         res.json(newEmployee)
     } catch (error) {
         res.status(500).json({"error": error.message});
