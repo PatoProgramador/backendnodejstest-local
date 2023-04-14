@@ -6,7 +6,10 @@ const getEmployee = async (req, res) => {
         const employee = await Empleado.findOne({
             where: {codigo: id}
         })
-        res.json(employee);
+        if(!employee) {
+            throw new Error(`No existen empleados con el código: ${id}`)
+        }
+        res.status(200).json(employee);
     } catch (error) {
         res.status(500).json({"error": error.message});
     }
