@@ -1,4 +1,5 @@
 const Empleado = require('../../models/empleado');
+const {Op} = require("sequelize");
 
 const getEmployees = async (req, res) => {
     try {
