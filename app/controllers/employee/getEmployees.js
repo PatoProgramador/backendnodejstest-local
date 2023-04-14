@@ -2,7 +2,16 @@ const Empleado = require('../../models/empleado');
 
 const getEmployees = async (req, res) => {
     try {
-        const employees = await Empleado.findAll();
+        let employees;
+        if(req.query) {
+            const {name} = req.query;
+            employees = await Empleado.findAll({
+                where: {
+                    nombre: {[Op.iLike]: `%${name}%`},
+                }
+            });
+        }
+        employees = await Empleado.findAll();
         res.status(200).json(employees) 
     } catch (error) {
         res.status(500).json({"error": error.message});
