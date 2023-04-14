@@ -6,6 +6,7 @@ const getEmployee = async (req, res) => {
         const employee = await Empleado.findOne({
             where: {codigo: id}
         })
+        // validacion 
         if(!employee) {
             throw new Error(`No existen empleados con el código: ${id}`)
         }

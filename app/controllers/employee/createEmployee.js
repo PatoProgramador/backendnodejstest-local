@@ -19,11 +19,7 @@ const createEmployee = async (req, res) => {
         };
         // creación de la tabla
         const newEmployee = await Empleado.create({
-            nif,
-            nombre,
-            apellido1,
-            apellido2,
-            codigo_departamento
+            ...validate
         });
         res.status(200).json(newEmployee);
     } catch (error) {
