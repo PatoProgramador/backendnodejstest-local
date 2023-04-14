@@ -1,5 +1,4 @@
 const Empleado = require('../../models/empleado');
-const Departamento = require('../../models/departamento');
 
 const getEmployeeDepartment = async (req, res) => {
     const { id } = req.params;
