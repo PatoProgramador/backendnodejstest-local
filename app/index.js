@@ -24,7 +24,7 @@ app.use("/departamentos", require('./routes/departmentRoute'));
 
 async function main() {
     try {
-        await sequelize.sync({force: false});
+        await sequelize.sync({force: true});
         console.log("Connection with database established successfully");
         app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
     } catch (error) {
