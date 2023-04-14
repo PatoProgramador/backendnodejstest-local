@@ -13,7 +13,7 @@ const createEmployee = async (req, res) => {
         for(const key in validate) {
             const element = validate[key];
             if(!element && key !== "apellido2") {
-                res.status(400).json({"message": `el campo ${key} no puede estar vacio`})
+               throw new Error(`el campo ${key} no puede estar vacio`)
             };
         };
         const newEmployee = await Empleado.create({
@@ -23,11 +23,10 @@ const createEmployee = async (req, res) => {
             apellido2,
             codigo_departamento
         });
-    
-        return res.status(200).json(newEmployee)  
+        res.status(200).json(newEmployee)  
     } catch (error) {
-        return res.status(500).json({"error": error.message});
+        res.status(500).json({"error": error.message});
     }
 };
 
-module.exports = {createEmployee};
+module.exports = { createEmployee };
