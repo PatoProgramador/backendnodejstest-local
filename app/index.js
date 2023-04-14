@@ -19,11 +19,12 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(morgan("dev"));
 
-app.use("/", require('./routes/main'));
+app.use("/empleados", require('./routes/employeeRoute'));
+app.use("/departamentos", require('./routes/departmentRoute'));
 
 async function main() {
     try {
-        await sequelize.sync({force: true});
+        await sequelize.sync({force: false});
         console.log("Connection with database established successfully");
         app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
     } catch (error) {

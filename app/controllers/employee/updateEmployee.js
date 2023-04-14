@@ -1,6 +1,7 @@
-const Empleado = require('../models/empleado');
+const Empleado = require('../../models/empleado');
 
 const updateEmployee = async (req, res) => {
+    const { id } = req.params;
     const { nif, nombre, apellido1, apellido2 } = req.body;
     try {
         const newEmployee = await Empleado.create({
