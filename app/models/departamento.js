@@ -19,8 +19,14 @@ const Departamento = db.define('departamentos', {
     }
 });
 
-Departamento.hasMany(Empleado);
+Departamento.hasMany(Empleado, {
+    foreignKey: 'codigo_departamento',
+    sourceKey: 'codigo'
+});
 
-Empleado.belongsTo(Departamento,{foreignKey: { name: "codigo_departamento"}})
+Empleado.belongsTo(Departamento,{
+    foreignKey: 'codigo_departamento',
+    sourceKey: 'codigo'
+})
 
 module.exports = Departamento;
